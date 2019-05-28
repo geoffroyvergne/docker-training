@@ -29,9 +29,17 @@ docker run \
     -e POSTGRES_PASSWORD=todo \
     -e POSTGRES_DB=todo \
     -e POSTGRES_ROOT_PASSWORD=postgres \
+    -v /home/vagrant/db/docker/demo/postgresql:/var/lib/postgresql/data \
     -d \
 	postgres
 ```
+
+- -e : Set environment variable (key=value)
+- -v : Mount volume (host:container)
+
+### Check if postgres data are properly mounted
+
+```sudo ls /home/vagrant/db/docker/demo/postgresql/```
 
 ### Then the app
 
@@ -39,19 +47,26 @@ docker run \
 docker run \
     --rm \
     --name demo-back \
+    --link postgres \
     -p 8080:8080 \
-    -e DATABASE_HOST=192.168.33.10 \
+    -e DATABASE_HOST=postgres \
     -e DATABASE_USER=todo \
     -e DATABASE_PASSWORD=todo \
     -e DATABASE_BASE=todo \
-    -e HIBERNATE_DLLAUTO=create-drop \
+    -e HIBERNATE_DLLAUTO=validate \
     -d \
     gvergne/demo-back:1.0
 ```
 
+- --link containername:alias
+- HIBERNATE_DLLAUTO create : first time
+- HIBERNATE_DLLAUTO validate : to keep data
+
+
 ## Test API
 
 ```curl -v http://localhost:8080/api/backend/todo/```
+```curl -v http://192.168.33.10:8080/api/backend/todo/```
 
 ## Push
 
@@ -60,3 +75,5 @@ docker run \
 ```docker tag demo-back <login>/demo-back:latest```
 
 ```docker push <login>/demo-back:latest```
+    
+```docker push <login>/demo-back:1.0```

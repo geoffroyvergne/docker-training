@@ -7,14 +7,14 @@ WORKDIR /build
 COPY pom.xml .
 COPY src .
 
-RUN mvn \
-	-Dhttp.proxyHost=fr-proxy.groupinfra.com \
-	-Dhttp.proxyPort=3128 \
-	-Dhttps.proxyHost=fr-proxy.groupinfra.com \
-	-Dhttps.proxyPort=3128 \
-	package
+#RUN mvn \
+#	-Dhttp.proxyHost=fr-proxy.groupinfra.com \
+#	-Dhttp.proxyPort=3128 \
+#	-Dhttps.proxyHost=fr-proxy.groupinfra.com \
+#	-Dhttps.proxyPort=3128 \
+#	package
 
-#RUN mvn package
+RUN mvn package
 
 # ------------- RUN ----------------
 

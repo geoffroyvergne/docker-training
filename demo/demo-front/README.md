@@ -27,7 +27,21 @@ docker run \
     --rm \
     --name demo-front \
     -p 80:80 \
-    -e NGINX_BACKEND_API="http://192.168.33.10:8080"
+    -e NGINX_BACKEND_API="http://192.168.33.10:8080" \
+    -d \
     demo-front
 ```
 
+## Push
+
+```docker login```
+
+```docker tag demo-front <login>/demo-front:latest```
+
+```docker push <login>/demo-front:latest```
+
+```docker push <login>/demo-front:1.0```
+
+## Run in browser
+
+[http://192.168.33.10](http://192.168.33.10)

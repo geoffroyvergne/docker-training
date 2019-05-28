@@ -20,7 +20,7 @@ COPY default.tmpl /etc/nginx/default.tmpl
 
 RUN rm /usr/share/nginx/html/*
 
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/demo-front/ /usr/share/nginx/html/
 
 ENV NGINX_BACKEND_API="http://192.168.33.10:8080" \
 NGINX_PORT=80 \

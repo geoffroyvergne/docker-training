@@ -173,6 +173,7 @@ a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago
 
 ## Demo App
 
-```cd /vagrant_data/demo/demo-back/```
+- [Backend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-back)
+- [Frontend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-front)
+- [Docker compose](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-devops)
 
-```docker build -t demo-back .```

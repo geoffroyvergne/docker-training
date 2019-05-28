@@ -34,9 +34,10 @@ services:
       - DATABASE_USER=todo
       - DATABASE_PASSWORD=todo
       - DATABASE_BASE=todo
-      - HIBERNATE_DLLAUTO=create-drop
+      #- HIBERNATE_DLLAUTO=create-drop
+      #- HIBERNATE_DLLAUTO=create
       #- HIBERNATE_DLLAUTO=update
-      #- HIBERNATE_DLLAUTO=validate
+      - HIBERNATE_DLLAUTO=validate
     depends_on:
       - database
     links:
