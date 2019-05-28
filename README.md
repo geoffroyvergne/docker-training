@@ -13,7 +13,15 @@
 
 - [Download vagrant windows](https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.msi)
 
-## Run vm (in folder with Vagrantfile)
+## Clone repository (with gitbash)
+
+```cd /C/dev```
+
+```git clone https://github.com/geoffroyvergne/docker-training.git```
+
+## Run vm (in folder with Vagrantfile with gitbash)
+
+```cd docker-training```
 
 ```vagrant up```
 

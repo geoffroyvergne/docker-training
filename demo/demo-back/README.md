@@ -8,9 +8,17 @@
 
 ```mvn spring-boot:run```
 
-```mvn package docker:build```
+```mvn package```
+
+## Docker build
+
+### Change proxy settings in Dockerfile
+
+```docker build -t demo-back .```
 
 ## Run
+
+### Run Postgres first
 
 ```
 docker run \
@@ -23,6 +31,8 @@ docker run \
     -e POSTGRES_ROOT_PASSWORD=postgres \
 	postgres
 ```
+
+### Then the app
 
 ```
 docker run \
