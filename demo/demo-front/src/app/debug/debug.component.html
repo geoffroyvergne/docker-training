@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4><i class="fa fa-random fa-2x"></i>&nbsp;Debug</h4>
+</div>
+
+<div>&nbsp;</div>
+
+<div style="width:500px;">
+
+  <button (click)="getDebug('test')" [disabled]="statusPromiseLoading" class="btn btn-info">
+    Test
+  </button>
+
+  &nbsp;
+
+  <button (click)="getDebug('host')" [disabled]="statusPromiseLoading" class="btn btn-info">
+    Host
+  </button>
+
+  &nbsp;
+
+  <button (click)="getDebug('date')" [disabled]="statusPromiseLoading" class="btn btn-info">
+    Date
+  </button>
+
+  <div>&nbsp;</div>
+
+  <div>
+    <pre class="card card-block card-header">{{ statusPromise | json }}</pre>
+  </div>
+
+</div>

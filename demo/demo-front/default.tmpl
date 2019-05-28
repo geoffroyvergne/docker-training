@@ -1,0 +1,16 @@
+server {
+  listen       ${NGINX_PORT};
+  server_name  ${NGINX_SERVER_NAME};
+
+  location / {
+    root   /usr/share/nginx/html;
+    index  index.html index.htm;
+    autoindex ${NGINX_AUTO_INDENT};
+    
+    try_files $uri $uri/ /index.html;
+  }
+
+  location /api/backend {
+    proxy_pass         ${NGINX_BACKEND_API};
+  }
+}

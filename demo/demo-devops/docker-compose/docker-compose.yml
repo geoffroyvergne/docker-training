@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  database:
+    image: postgres:11.1
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=todo
+      - POSTGRES_PASSWORD=todo
+      - POSTGRES_DB=todo
+      - POSTGRES_ROOT_PASSWORD=postgres
+    volumes:
+      - /data/db/docker/demo/postgresql:/var/lib/postgresql/data
+
+  frontend:
+    image: gvergne/demo-front:1.0
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_BACKEND_API=http://backend:8080
+    depends_on:
+      - backend
+    links:
+      - backend:backend
+
+  backend:
+    image: gvergne/demo-back:1.0
+    restart: unless-stopped
+    environment:
+      - DATABASE_HOST=database
+      - DATABASE_USER=todo
+      - DATABASE_PASSWORD=todo
+      - DATABASE_BASE=todo
+      #- HIBERNATE_DLLAUTO=create-drop
+      #- HIBERNATE_DLLAUTO=update
+      - HIBERNATE_DLLAUTO=validate
+    depends_on:
+      - database
+    links:
+      - database:database

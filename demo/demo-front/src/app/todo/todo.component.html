@@ -1,0 +1,53 @@
+<app-todo-addedit 
+  *ngIf="addEditFormVisible" 
+  [todo]="todo"
+  (changeAddEditFormVisible)="changeAddEditFormVisible($event)">
+</app-todo-addedit>
+
+<div *ngIf="! addEditFormVisible" >
+  <div class="modal-header">
+    <h4>
+      <i class="fa fa-users fa-2x"></i>&nbsp;Todo
+  </h4>
+  </div>
+
+  <button (click)="getAll()" [disabled]="todoPromiseLoading" class="btn btn-info">
+    Reload
+  </button>
+
+  &nbsp;
+
+  <button (click)="addEditForm()" [disabled]="todoPromiseLoading" class="btn btn-info">
+    Add
+  </button>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Done</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of todoPromise">
+      <th scope="row">{{ todo?.id }}</th>
+      <td>{{ todo?.name }}</td>
+      <td>{{ todo?.todate | date:'dd-MM-yyyy' }}</td>
+      <td>{{ todo?.done }}</td>
+      <td>
+        <a (click)="addEditForm(todo)" role="button" title="Edit"><i class="btn btn-info fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        <a (click)="delete(todo)" role="button" title="Delete"><i class="btn btn-danger fa fa-trash" aria-hidden="true"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div>&nbsp;</div>
+
+  <div>
+    <pre class="card card-block card-header">{{ todoPromise | json }}</pre>
+  </div>
+</div>

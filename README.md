@@ -26,11 +26,18 @@
 
 ```Restart-Service docker```
 
+## Docker hub account
+
+- [Docker Hub](https://hub.docker.com/)
+- [Docker Hub Registration]https://hub.docker.com/signup?next=%2F%3Fref%3Dlogin)
+
 ## Basic commands
 
 ### Get current version
 
 ```docker --version```
+
+```Docker version 18.09.3, build 774a1f4```
 
 ### Launch your first container
 
@@ -105,8 +112,11 @@ Status: Downloaded newer image for nginx:1.15-alpine
 ```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago       Up 1 second         0.0.0.0:80->80/tcp       nginx
-
 ```
+
+### Check logs
+
+```docker logs nginx```
 
 ### Explore container
 
@@ -115,3 +125,6 @@ a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago
 ### Stop container
 
 ```docker stop nginx```
+
+## Demo App
+

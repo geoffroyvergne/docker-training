@@ -1,0 +1,11 @@
+**/target
+**/node_modules
+**/dist
+
+**/.idea
+**/.vscode/*
+
+**/.DS_Store0
+**/Thumbs.db
+
+**/package-lock.json
