@@ -3,33 +3,48 @@
 [Docker website](https://www.docker.com/)
 [Docker doc](https://docs.docker.com/)
 
-## Windows Install
+## Linux install (on windows)
 
 ### Requierements
 
-- Windows 10
-- Power shell
+- Windows 10 7
+- Git bash
+- vagrant
 
-### Doc
+- [Download vagrant windows](https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.msi)
 
-- [Docker installation windows](https://docs.docker.com/docker-for-windows/)
-- [Docker installation manual](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
-- [Download Docker for windows](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
+## Run vm (in folder with Vagrantfile)
 
-## Set proxy
+```vagrant up```
 
-### Power shell
+### SSH
+
+```vagrant ssh```
+
+### Proxy
+
+```sudo mkdir /etc/systemd/system/docker.service.d```
+
+```sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf```
 
 ```
-[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://username:password@proxy:port/", [EnvironmentVariableTarget]::Machine)
+[Service]
+Environment="HTTP_PROXY=http://192.168.33.1:3128"
+Environment="HTTPS_PROXY=http://192.168.33.1:3128"
+Environment="NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com"
 ```
 
-```Restart-Service docker```
+```sudo systemctl daemon-reload```
 
-## Docker hub account
+```sudo systemctl restart docker```
 
-- [Docker Hub](https://hub.docker.com/)
-- [Docker Hub Registration]https://hub.docker.com/signup?next=%2F%3Fref%3Dlogin)
+### Share with os host
+
+```ls /vagrant_data```
+
+### Stop
+
+```vagrant halt```
 
 ## Basic commands
 

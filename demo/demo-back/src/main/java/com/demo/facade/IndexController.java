@@ -1,6 +1,6 @@
-package fr.gouv.interieur.cloudready.demo.facade;
+package com.demo.facade;
 
-import fr.gouv.interieur.cloudready.demo.model.Status;
+import com.demo.model.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

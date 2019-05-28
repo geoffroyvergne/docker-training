@@ -1,4 +1,4 @@
-package fr.gouv.interieur.cloudready.demo.model;
+package com.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

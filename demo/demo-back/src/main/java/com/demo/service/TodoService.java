@@ -1,7 +1,7 @@
-package fr.gouv.interieur.cloudready.demo.service;
+package com.demo.service;
 
-import fr.gouv.interieur.cloudready.demo.model.Todo;
-import fr.gouv.interieur.cloudready.demo.repository.TodoRepository;
+import com.demo.repository.TodoRepository;
+import com.demo.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

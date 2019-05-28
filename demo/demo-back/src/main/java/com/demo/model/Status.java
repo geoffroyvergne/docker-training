@@ -1,4 +1,4 @@
-package fr.gouv.interieur.cloudready.demo.model;
+package com.demo.model;
 
 public class Status {
 

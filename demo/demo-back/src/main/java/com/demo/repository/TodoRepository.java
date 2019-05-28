@@ -1,6 +1,6 @@
-package fr.gouv.interieur.cloudready.demo.repository;
+package com.demo.repository;
 
-import fr.gouv.interieur.cloudready.demo.model.Todo;
+import com.demo.model.Todo;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

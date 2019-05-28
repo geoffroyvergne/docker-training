@@ -1,0 +1,27 @@
+## Windows Install
+
+### Requierements
+
+- Windows 10
+- Power shell
+
+### Doc
+
+- [Docker installation windows](https://docs.docker.com/docker-for-windows/)
+- [Docker installation manual](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
+- [Download Docker for windows](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
+
+### Set proxy
+
+### Power shell
+
+```
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://username:password@proxy:port/", [EnvironmentVariableTarget]::Machine)
+```
+
+```Restart-Service docker```
+
+## Docker hub account
+
+- [Docker Hub](https://hub.docker.com/)
+- [Docker Hub Registration]https://hub.docker.com/signup?next=%2F%3Fref%3Dlogin)
