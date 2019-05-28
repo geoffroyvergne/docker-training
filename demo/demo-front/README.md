@@ -18,7 +18,7 @@
 
 ## Docker build
 
-
+```docker build -t demo-front .```
 
 ## Run
 
@@ -27,7 +27,7 @@ docker run \
     --rm \
     --name demo-front \
     -p 80:80 \
-    -e NGINX_BACKEND_API="http://10.237.5.166:8080"
+    -e NGINX_BACKEND_API="http://192.168.33.10:8080"
     demo-front
 ```
 

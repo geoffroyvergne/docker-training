@@ -1,3 +1,5 @@
+# ------------- BUILD ----------------
+
 FROM maven:3-jdk-11-slim as target
 
 WORKDIR /build
@@ -6,11 +8,15 @@ COPY pom.xml .
 COPY src .
 
 RUN mvn \
-	-Dhttp.proxyHost=192.168.33.1 \
+	-Dhttp.proxyHost=fr-proxy.groupinfra.com \
 	-Dhttp.proxyPort=3128 \
-	-Dhttps.proxyHost=192.168.33.1 \
+	-Dhttps.proxyHost=fr-proxy.groupinfra.com \
 	-Dhttps.proxyPort=3128 \
 	package
+
+#RUN mvn package
+
+# ------------- RUN ----------------
 
 FROM openjdk:11-jdk-slim
 

@@ -29,6 +29,7 @@ docker run \
     -e POSTGRES_PASSWORD=todo \
     -e POSTGRES_DB=todo \
     -e POSTGRES_ROOT_PASSWORD=postgres \
+    -d \
 	postgres
 ```
 
@@ -39,12 +40,13 @@ docker run \
     --rm \
     --name demo-back \
     -p 8080:8080 \
-    -e DATABASE_HOST=10.237.6.85 \
+    -e DATABASE_HOST=192.168.33.10 \
     -e DATABASE_USER=todo \
     -e DATABASE_PASSWORD=todo \
     -e DATABASE_BASE=todo \
     -e HIBERNATE_DLLAUTO=create-drop \
-    demo-back
+    -d \
+    gvergne/demo-back:1.0
 ```
 
 ## Test API

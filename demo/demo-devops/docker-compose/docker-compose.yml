@@ -12,7 +12,7 @@ services:
       - POSTGRES_DB=todo
       - POSTGRES_ROOT_PASSWORD=postgres
     volumes:
-      - /data/db/docker/demo/postgresql:/var/lib/postgresql/data
+      - /home/vagrant/db/docker/demo/postgresql:/var/lib/postgresql/data
 
   frontend:
     image: gvergne/demo-front:1.0
@@ -34,9 +34,9 @@ services:
       - DATABASE_USER=todo
       - DATABASE_PASSWORD=todo
       - DATABASE_BASE=todo
-      #- HIBERNATE_DLLAUTO=create-drop
+      - HIBERNATE_DLLAUTO=create-drop
       #- HIBERNATE_DLLAUTO=update
-      - HIBERNATE_DLLAUTO=validate
+      #- HIBERNATE_DLLAUTO=validate
     depends_on:
       - database
     links:

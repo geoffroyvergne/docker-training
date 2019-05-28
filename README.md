@@ -109,7 +109,13 @@ This message shows that your installation appears to be working correctly.
 
 ### Run container
 
-```docker run --rm --name -d nginx -p 80:80 nginx:1.15-alpine```
+```docker run --rm --name nginx -p 80:80 -d nginx:1.15-alpine```
+
+- --rm : container auto delete on stop
+- --name : give a name to the instance
+- -d : run in background
+- -p : <containerport>:<hostport>
+- nginx:1.15-alpine image to use
 
 ```
 Unable to find image 'nginx:1.15-alpine' locally
@@ -128,6 +134,8 @@ Status: Downloaded newer image for nginx:1.15-alpine
 
 ```curl -v localhost```
 
+```curl -v 192.168.33.10```
+
 ### Find process
 
 ```docker ps```
@@ -139,7 +147,7 @@ a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago
 
 ### Check logs
 
-```docker logs nginx```
+```docker logs -f nginx```
 
 ### Explore container
 
@@ -149,5 +157,22 @@ a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago
 
 ```docker stop nginx```
 
+## Hello NGINX
+
+```cd /vagrant_data/demo/nginx```
+
+```docker build -t hello-nginx .```
+
+```docker run --rm --name hello-nginx -p 80:80 -d hello-nginx```
+
+```curl -v localhost```
+
+```curl -v 192.168.33.10```
+
+```docker stop hello-nginx```
+
 ## Demo App
 
+```cd /vagrant_data/demo/demo-back/```
+
+```docker build -t demo-back .```
