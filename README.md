@@ -171,6 +171,36 @@ a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago
 
 ```docker stop hello-nginx```
 
+### Explore image
+
+```docker image inspect hello-nginx```
+
+### Dive
+
+- [Dive](https://github.com/wagoodman/dive)
+
+```
+wget https://github.com/wagoodman/dive/releases/download/v0.7.2/dive_0.7.2_linux_amd64.deb
+sudo apt install ./dive_0.7.2_linux_amd64.deb
+```
+
+```dive demo-front```
+
+```dive demo-back```
+
+## Test image quality
+
+```CI=true dive demo-back```
+
+## Images optimisation
+
+### Java example
+
+- FROM adoptopenjdk/openjdk11 				421 MB
+- FROM adoptopenjdk/openjdk11:alpine 		323 MB
+- FROM adoptopenjdk/openjdk11:alpine-jre 	126 MB
+
+
 ## Demo App
 
 - [Backend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-back)

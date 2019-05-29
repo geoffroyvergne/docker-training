@@ -1,7 +1,7 @@
-FROM openjdk:11-jdk-slim
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 EXPOSE 8080
 
-COPY /build/target/*.jar /app/demo-back.jar
+COPY target/*.jar /app/demo-back.jar
 
 CMD ["java", "-jar", "/app/demo-back.jar"]

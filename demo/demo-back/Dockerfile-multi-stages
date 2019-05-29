@@ -1,6 +1,6 @@
 # ------------- BUILD ----------------
 
-FROM maven:3-jdk-11-slim as target
+FROM adoptopenjdk/maven-openjdk11 as target
 
 WORKDIR /build
 
@@ -18,7 +18,7 @@ RUN mvn package
 
 # ------------- RUN ----------------
 
-FROM openjdk:11-jdk-slim
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 EXPOSE 8080
 
