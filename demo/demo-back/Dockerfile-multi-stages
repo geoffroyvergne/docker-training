@@ -1,6 +1,6 @@
 # ------------- BUILD ----------------
 
-FROM adoptopenjdk/maven-openjdk11 as target
+FROM adoptopenjdk/maven-openjdk11 as build
 
 WORKDIR /build
 
@@ -22,6 +22,6 @@ FROM adoptopenjdk/openjdk11:alpine-jre
 
 EXPOSE 8080
 
-COPY --from=target /build/target/*.jar /app/demo-back.jar
+COPY --from=build /build/target/*.jar /app/demo-back.jar
 
 CMD ["java", "-jar", "/app/demo-back.jar"]

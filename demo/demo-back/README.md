@@ -1,6 +1,24 @@
 # Demo Back
 
-## https://start.spring.io/
+[https://start.spring.io/](https://start.spring.io/)
+
+## Run Postgres first
+
+```
+docker run \
+    --rm \
+    --name postgres \
+    -p 5432 \
+    -e POSTGRES_USER=todo \
+    -e POSTGRES_PASSWORD=todo \
+    -e POSTGRES_DB=todo \
+    -v /home/vagrant/db/docker/demo/postgresql:/var/lib/postgresql/data \
+    -d \
+    postgres
+```
+
+- -e : Set environment variable (key=value)
+- -v : Mount volume (host:container)
 
 ## Build
 
@@ -12,48 +30,15 @@
 
 ## Docker build
 
-### Change proxy settings in Dockerfile
-
 ```docker build -t demo-back .```
 
-### Build Multi Stages
+### Build Multi Stages (change proxy settings if needed)
 
 ```docker build -f Dockerfile-multistage -t demo-front .```
 
 ## Run
 
-### Run Postgres first
-
-```
-docker run \
-    --rm \
-    --name postgres \
-    -p 5432 \
-    -e POSTGRES_USER=todo \
-    -e POSTGRES_PASSWORD=todo \
-    -e POSTGRES_DB=todo \
-    -e POSTGRES_ROOT_PASSWORD=postgres \
-    -v /home/vagrant/db/docker/demo/postgresql:/var/lib/postgresql/data \
-    -d \
-    postgres
-```
-
-- -e : Set environment variable (key=value)
-- -v : Mount volume (host:container)
-
-### Check if postgres data are properly mounted
-
-```sudo ls /home/vagrant/db/docker/demo/postgresql/```
-
-### Check postgres tables
-
-```docker exec -ti postgres bash```
-
-```psql -U todo```
-
-```select * from todo;```
-
-### Then run the app
+### Run the application
 
 ```
 docker run \
@@ -74,17 +59,31 @@ docker run \
 - HIBERNATE_DLLAUTO create : first time
 - HIBERNATE_DLLAUTO validate : to keep data
 
-## Test API
+### Test API
 
 ```curl -v http://localhost:8080/api/backend/todo/```
 
 ```curl -v http://192.168.33.10:8080/api/backend/todo/```
+
+### Check if postgres data are properly mounted
+
+```sudo ls /home/vagrant/db/docker/demo/postgresql/```
+
+### Check postgres tables
+
+```docker exec -ti postgres bash```
+
+```psql -U todo```
+
+```select * from todo;```
 
 ## Push
 
 ```docker login```
 
 ```docker tag demo-back <login>/demo-back:latest```
+
+```docker tag demo-back <login>/demo-back:0.1```
 
 ```docker push <login>/demo-back:latest```
     

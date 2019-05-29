@@ -171,6 +171,24 @@ a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago
 
 ```docker stop hello-nginx```
 
+### Tag
+
+```docker tag <source> <target>:<version>```
+
+```docker tag hello-nginx hello-nginx:1.0```
+
+### Push
+
+```docker login```
+
+```docker tag <login>/<image>:<version>```
+
+```docker tag gvergne/hello-nginx:1.0```
+
+```docker push <login>/<image>:<version>```
+
+```docker push gvergne/hello-nginx:1.0```
+
 ### Explore image
 
 ```docker image inspect hello-nginx```
@@ -200,8 +218,9 @@ sudo apt install ./dive_0.7.2_linux_amd64.deb
 - FROM adoptopenjdk/openjdk11:alpine 		323 MB
 - FROM adoptopenjdk/openjdk11:alpine-jre 	126 MB
 
-
 ## Demo App
+
+### 1- postgres <- 2- demo-back <- 3- demo-front
 
 - [Backend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-back)
 - [Frontend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-front)
