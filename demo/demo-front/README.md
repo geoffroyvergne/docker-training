@@ -18,7 +18,13 @@
 
 ## Docker build
 
+### Simple
+
 ```docker build -t demo-front .```
+
+### Multi Stages
+
+```docker build -f Dockerfile-multistage -t demo-front .```
 
 ## Run
 
@@ -29,8 +35,12 @@ docker run \
     -p 80:80 \
     -e NGINX_BACKEND_API="http://192.168.33.10:8080" \
     -d \
-    demo-front
+    gvergne/demo-front:1.0
 ```
+
+## Run in browser
+
+[http://192.168.33.10](http://192.168.33.10)
 
 ## Push
 
@@ -41,7 +51,3 @@ docker run \
 ```docker push <login>/demo-front:latest```
 
 ```docker push <login>/demo-front:1.0```
-
-## Run in browser
-
-[http://192.168.33.10](http://192.168.33.10)

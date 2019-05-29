@@ -1,26 +1,10 @@
-# ------------- BUILD ----------------
-FROM node:12-alpine AS build
-
-WORKDIR /app
-COPY . .
-
-RUN npm set progress=false && npm config set depth 0
-
-RUN npm install -g @angular/cli
-
-RUN npm install
-
-RUN npm run build
-
-# ------------- RUN ----------------
-
 FROM nginx:1.15-alpine
 
 COPY default.tmpl /etc/nginx/default.tmpl
 
 RUN rm /usr/share/nginx/html/*
 
-COPY --from=build /app/dist/demo-front/ /usr/share/nginx/html/
+COPY dist/demo-front/ /usr/share/nginx/html/
 
 ENV NGINX_BACKEND_API="http://192.168.33.10:8080" \
 NGINX_PORT=80 \

@@ -7,7 +7,7 @@
 
 ### Requierements
 
-- Windows 10 7
+- Windows 10 - 7
 - Git bash
 - vagrant
 
@@ -37,8 +37,8 @@
 
 ```
 [Service]
-Environment="HTTP_PROXY=http://192.168.33.1:3128"
-Environment="HTTPS_PROXY=http://192.168.33.1:3128"
+Environment="HTTP_PROXY=http://fr-proxy.groupinfra.com:3128"
+Environment="HTTPS_PROXY=https://fr-proxy.groupinfra.com:3128"
 Environment="NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com"
 ```
 

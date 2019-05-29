@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docker": "docker build -t docker.forge.dsic.minint.fr/geoffroy.vergne-cgi/demo-front ."
+    "docker": "docker build -t demo-front ."
   },
   "private": true,
   "dependencies": {

@@ -5,14 +5,14 @@ services:
     image: postgres:11.1
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "5432"
     environment:
       - POSTGRES_USER=todo
       - POSTGRES_PASSWORD=todo
       - POSTGRES_DB=todo
       - POSTGRES_ROOT_PASSWORD=postgres
     volumes:
-      - /home/vagrant/db/docker/demo/postgresql:/var/lib/postgresql/data
+      - /data/db/docker/demo/postgresql:/var/lib/postgresql/data
 
   frontend:
     image: gvergne/demo-front:1.0
@@ -37,7 +37,7 @@ services:
       #- HIBERNATE_DLLAUTO=create-drop
       #- HIBERNATE_DLLAUTO=create
       #- HIBERNATE_DLLAUTO=update
-      - HIBERNATE_DLLAUTO=validate
+      - HIBERNATE_DLLAUTO=create
     depends_on:
       - database
     links:
