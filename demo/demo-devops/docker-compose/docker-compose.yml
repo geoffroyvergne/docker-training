@@ -10,7 +10,6 @@ services:
       - POSTGRES_USER=todo
       - POSTGRES_PASSWORD=todo
       - POSTGRES_DB=todo
-      - POSTGRES_ROOT_PASSWORD=postgres
     volumes:
       - /data/db/docker/demo/postgresql:/var/lib/postgresql/data
 

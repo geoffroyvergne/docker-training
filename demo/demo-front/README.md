@@ -49,7 +49,7 @@ docker run \
 
 ```docker tag demo-front <login>/demo-front:latest```
 
-	```docker tag demo-front <login>/demo-front:1.0```
+```docker tag demo-front <login>/demo-front:1.0```
 
 ```docker push <login>/demo-front:latest```
 

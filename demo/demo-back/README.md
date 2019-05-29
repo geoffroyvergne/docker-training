@@ -12,7 +12,7 @@ docker run \
     -e POSTGRES_USER=todo \
     -e POSTGRES_PASSWORD=todo \
     -e POSTGRES_DB=todo \
-    -v /home/vagrant/db/docker/demo/postgresql:/var/lib/postgresql/data \
+    -v /data/db/docker/demo/postgresql:/var/lib/postgresql/data \
     -d \
     postgres
 ```
@@ -55,7 +55,7 @@ docker run \
     gvergne/demo-back:1.0
 ```
 
-- --link containername:alias
+- --link containername
 - HIBERNATE_DLLAUTO create : first time
 - HIBERNATE_DLLAUTO validate : to keep data
 
@@ -67,7 +67,7 @@ docker run \
 
 ### Check if postgres data are properly mounted
 
-```sudo ls /home/vagrant/db/docker/demo/postgresql/```
+```sudo ls /data/db/docker/demo/postgresql/```
 
 ### Check postgres tables
 

@@ -1,7 +1,7 @@
 # Docker Training
 
-[Docker website](https://www.docker.com/)
-[Docker doc](https://docs.docker.com/)
+- [Docker website](https://www.docker.com/)
+- [Docker doc](https://docs.docker.com/)
 
 ## Linux install (on windows)
 
@@ -54,7 +54,11 @@ Environment="NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com"
 
 ```vagrant halt```
 
-## Basic commands
+### Clear environment
+
+```vagrant destroy -f```
+
+## Docker Basic commands
 
 ### Get current version
 
@@ -145,6 +149,42 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago       Up 1 second         0.0.0.0:80->80/tcp       nginx
 ```
 
+### Linux process
+
+```
+pstree
+systemd─┬─VBoxService───7*[{VBoxService}]
+        ├─accounts-daemon───2*[{accounts-daemon}]
+        ├─agetty
+        ├─atd
+        ├─cron
+        ├─dbus-daemon
+        ├─dockerd─┬─docker-containe─┬─docker-containe─┬─postgres───16*[postgres]
+        │         │                 │                 └─9*[{docker-containe}]
+        │         │                 ├─docker-containe─┬─java───28*[{java}]
+        │         │                 │                 └─9*[{docker-containe}]
+        │         │                 ├─docker-containe─┬─sh───nginx───nginx
+        │         │                 │                 └─9*[{docker-containe}]
+        │         │                 └─10*[{docker-containe}]
+        │         ├─3*[docker-proxy───5*[{docker-proxy}]]
+        │         └─10*[{dockerd}]
+        ├─2*[iscsid]
+        ├─lvmetad
+        ├─lxcfs───10*[{lxcfs}]
+        ├─networkd-dispat───{networkd-dispat}
+        ├─polkitd───2*[{polkitd}]
+        ├─rsyslogd───3*[{rsyslogd}]
+        ├─snapd───7*[{snapd}]
+        ├─sshd───sshd───sshd───bash───pstree
+        ├─systemd───(sd-pam)
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-network
+        ├─systemd-resolve
+        └─systemd-udevd
+
+```
+
 ### Check logs
 
 ```docker logs -f nginx```
@@ -209,6 +249,21 @@ sudo apt install ./dive_0.7.2_linux_amd64.deb
 ## Test image quality
 
 ```CI=true dive demo-back```
+
+```
+Fetching image... (this can take a while with large images)
+Parsing image...
+Analyzing image...
+  efficiency: 99.4226 %
+  wastedBytes: 4568501 bytes (4.6 MB)
+  userWastedPercent: 0.9635 %
+Run CI Validations...
+  Using default CI config
+  PASS: highestUserWastedPercent
+  SKIP: highestWastedBytes: rule disabled
+  PASS: lowestEfficiency
+Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
+```
 
 ## Images optimisation
 
