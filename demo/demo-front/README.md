@@ -24,7 +24,7 @@
 
 ### Multi Stages (change proxy settings if needed)
 
-```docker build -f Dockerfile-multistage -t demo-front .```
+```docker build -f Dockerfile-multi-stage -t demo-front .```
 
 ## Run
 

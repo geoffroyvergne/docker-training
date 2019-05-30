@@ -27,7 +27,7 @@ RUN rm /usr/share/nginx/html/*
 
 COPY --from=build /app/dist/demo-front/ /usr/share/nginx/html/
 
-ENV NGINX_BACKEND_API="http://192.168.33.10:8080" \
+ENV NGINX_BACKEND_API="http://demo-back:8080" \
 NGINX_PORT=80 \
 NGINX_SERVER_NAME=localhost \
 NGINX_AUTO_INDENT=on
