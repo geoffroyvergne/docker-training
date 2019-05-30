@@ -8,7 +8,6 @@
 docker run \
     --rm \
     --name postgres \
-    -p 5432 \
     -e POSTGRES_USER=todo \
     -e POSTGRES_PASSWORD=todo \
     -e POSTGRES_DB=todo \
@@ -34,7 +33,7 @@ docker run \
 
 ### Build Multi Stages (change proxy settings if needed)
 
-```docker build -f Dockerfile-multistage -t demo-front .```
+```docker build -f Dockerfile-multi-stage -t demo-back .```
 
 ## Run
 
@@ -52,7 +51,7 @@ docker run \
     -e DATABASE_BASE=todo \
     -e HIBERNATE_DLLAUTO=create \
     -d \
-    gvergne/demo-back:1.0
+    gvergne/demo-back
 ```
 
 - --link containername

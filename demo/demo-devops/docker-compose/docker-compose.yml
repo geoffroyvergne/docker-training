@@ -4,8 +4,6 @@ services:
   database:
     image: postgres:11.1
     restart: unless-stopped
-    ports:
-      - "5432"
     environment:
       - POSTGRES_USER=todo
       - POSTGRES_PASSWORD=todo
@@ -23,7 +21,7 @@ services:
     depends_on:
       - backend
     links:
-      - backend:backend
+      - backend
 
   backend:
     image: gvergne/demo-back:1.0
@@ -40,4 +38,4 @@ services:
     depends_on:
       - database
     links:
-      - database:database
+      - database

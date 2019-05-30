@@ -8,6 +8,7 @@
 ### Requierements
 
 - Windows 10 - 7
+- Virtualbox
 - Git bash
 - vagrant
 
@@ -229,6 +230,14 @@ systemd─┬─VBoxService───7*[{VBoxService}]
 
 ```docker push gvergne/hello-nginx:1.0```
 
+## Demo App
+
+### 1- postgres <- 2- demo-back <- 3- demo-front
+
+- [Backend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-back)
+- [Frontend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-front)
+- [Docker compose](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-devops)
+
 ### Explore image
 
 ```docker image inspect hello-nginx```
@@ -269,15 +278,26 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 
 ### Java example
 
-- FROM adoptopenjdk/openjdk11 				421 MB
-- FROM adoptopenjdk/openjdk11:alpine 		323 MB
-- FROM adoptopenjdk/openjdk11:alpine-jre 	126 MB
+- FROM adoptopenjdk/openjdk11               421 MB
+- FROM adoptopenjdk/openjdk11:alpine        323 MB
+- FROM adoptopenjdk/openjdk11:alpine-jre    126 MB
 
-## Demo App
+## Usefull commands
 
-### 1- postgres <- 2- demo-back <- 3- demo-front
+### Kill all running containers
 
-- [Backend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-back)
-- [Frontend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-front)
-- [Docker compose](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-devops)
+```docker kill $(docker ps -q)```
 
+### Delete all stopped containers (including data-only containers)
+
+```docker rm $(docker ps -a -q)```
+
+```docker rm $(docker ps -q -f status=exited)```
+
+### Delete all 'untagged/dangling' () images
+
+```docker rmi $(docker images -q -f dangling=true)```
+
+### Delete ALL images
+
+```docker rmi $(docker images -q)```
