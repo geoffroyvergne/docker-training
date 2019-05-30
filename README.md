@@ -236,7 +236,7 @@ systemd─┬─VBoxService───7*[{VBoxService}]
 
 - [Backend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-back)
 - [Frontend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-front)
-- [Docker compose](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-devops)
+- [Docker compose](https://github.com/geoffroyvergne/docker-training/tree/master/demo/docker-compose)
 
 ### Explore image
 
