@@ -1,5 +1,7 @@
 # Demo Back
 
+Demo-back is a spring boot application linked on a postgresql database
+
 [https://start.spring.io/](https://start.spring.io/)
 
 ## Run Postgres first
@@ -35,9 +37,7 @@ docker run \
 
 ```docker build -f Dockerfile-multi-stage -t demo-back .```
 
-## Run
-
-### Run the application
+## Run the application
 
 ```
 docker run \

@@ -3,7 +3,14 @@
 - [Docker website](https://www.docker.com/)
 - [Docker doc](https://docs.docker.com/)
 
-## Linux install (on windows)
+This training aims to give the basic knowlege on Docker core components.
+- containers management
+- image management
+- image optimisation
+- how to manage an applicative stack
+- use of docker-compose to simplify docker dore basic use
+
+## Docker on Linux install (on windows)
 
 ### Requierements
 
@@ -119,7 +126,7 @@ This message shows that your installation appears to be working correctly.
 - --rm : container auto delete on stop
 - --name : give a name to the instance
 - -d : run in background
-- -p : <containerport>:<hostport>
+- -p : containerport:hostport
 - nginx:1.15-alpine image to use
 
 ```
@@ -151,6 +158,8 @@ a871585512ce        nginx:1.15-alpine   "nginx -g 'daemon of…"   4 seconds ago
 ```
 
 ### Linux process
+
+As you can see, docker containers are seen as process for host
 
 ```
 pstree
@@ -232,7 +241,12 @@ systemd─┬─VBoxService───7*[{VBoxService}]
 
 ## Demo App
 
-### 1- postgres <- 2- demo-back <- 3- demo-front
+The demo application is a simple CRUD Todo list. It is stacked in 3 layers :
+- Frontend (Angular Nginx as reverse proxy)
+- Backend (Spring Boot)
+- Database (Postgresql)
+
+### 1: postgres <- 2: demo-back <- 3: demo-front
 
 - [Backend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-back)
 - [Frontend](https://github.com/geoffroyvergne/docker-training/tree/master/demo/demo-front)
@@ -244,7 +258,7 @@ systemd─┬─VBoxService───7*[{VBoxService}]
 
 ### Dive
 
-- [Dive](https://github.com/wagoodman/dive)
+[Dive](https://github.com/wagoodman/dive) allows you to explore image layers. It gives statistics on image space usage and possible optimizations.
 
 ```
 wget https://github.com/wagoodman/dive/releases/download/v0.7.2/dive_0.7.2_linux_amd64.deb
@@ -277,6 +291,8 @@ Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 ## Images optimisation
 
 ### Java example
+
+Be careful when you choose images, size can change and be optimized for the same service.
 
 - FROM adoptopenjdk/openjdk11               421 MB
 - FROM adoptopenjdk/openjdk11:alpine        323 MB

@@ -1,5 +1,7 @@
 # Demo Front
 
+Demo front is an angular application, it consumes the backend. It is served by NGINX, the backend is accessible via reverse proxy as gateway.
+
 ## Install
 
 ```npm install```

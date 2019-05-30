@@ -1,6 +1,6 @@
-## Demo DevOps
+# Docker compose
 
-## docker-compose
+Docker compose helps to manage applicative stack 
 
 ### Start stack
 
@@ -48,5 +48,5 @@ docker-compose_frontend_1   /bin/sh -c /bin/sh -c "env ...   Up      0.0.0.0:80-
 
 ## Exercice
 
-- Change Help page content, tag fron version 1.0 version 1.1
+- Change Help page content, tag from version 1.0 version 1.1
 - restart service
