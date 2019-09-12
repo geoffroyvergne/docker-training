@@ -10,7 +10,7 @@ This training aims to give the basic knowlege on Docker core components.
 - how to manage an applicative stack
 - use of docker-compose to simplify docker dore basic use
 
-## Docker on Linux install (on windows)
+## Docker on Linux install (VM on windows)
 
 ### Requierements
 
@@ -68,6 +68,12 @@ Environment="NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com"
 
 ## Docker Basic commands
 
+### PreLoad images
+```docker pull nginx:1.15-alpine```
+```docker pull postgres:11.1```
+```docker pull adoptopenjdk/openjdk11:alpine-jre```
+```docker pull ubuntu```
+
 ### Get current version
 
 ```docker --version```
@@ -99,7 +105,8 @@ This message shows that your installation appears to be working correctly.
 
 ### List images
 
-```docker image ls```
+```docker images```
+```docker images -a```
 
 ### Delete image
 
@@ -304,9 +311,13 @@ Be careful when you choose images, size can change and be optimized for the same
 
 ```docker kill $(docker ps -q)```
 
+### Delete al containers
+
+```docker rm $(docker ps -qa)```
+
 ### Delete all stopped containers (including data-only containers)
 
-```docker rm $(docker ps -a -q)```
+```docker rm $(docker ps -q)```
 
 ```docker rm $(docker ps -q -f status=exited)```
 
