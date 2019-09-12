@@ -69,9 +69,13 @@ Environment="NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com"
 ## Docker Basic commands
 
 ### PreLoad images
+
 ```docker pull nginx:1.15-alpine```
+
 ```docker pull postgres:11.1```
+
 ```docker pull adoptopenjdk/openjdk11:alpine-jre```
+
 ```docker pull ubuntu```
 
 ### Get current version
@@ -106,6 +110,7 @@ This message shows that your installation appears to be working correctly.
 ### List images
 
 ```docker images```
+
 ```docker images -a```
 
 ### Delete image
@@ -216,7 +221,7 @@ systemd─┬─VBoxService───7*[{VBoxService}]
 
 ## Hello NGINX
 
-```cd /vagrant_data/demo/nginx```
+```cd  cd /vagrant_data/docker-training/demo/hello-nginx/```
 
 ```docker build -t hello-nginx .```
 
@@ -240,11 +245,11 @@ systemd─┬─VBoxService───7*[{VBoxService}]
 
 ```docker tag <login>/<image>:<version>```
 
-```docker tag gvergne/hello-nginx:1.0```
+```docker tag <login>/hello-nginx:1.0```
 
 ```docker push <login>/<image>:<version>```
 
-```docker push gvergne/hello-nginx:1.0```
+```docker push <login>/hello-nginx:1.0```
 
 ## Demo App
 
@@ -272,9 +277,9 @@ wget https://github.com/wagoodman/dive/releases/download/v0.7.2/dive_0.7.2_linux
 sudo apt install ./dive_0.7.2_linux_amd64.deb
 ```
 
-```dive demo-front```
+```dive gvergne/demo-front:1.0```
 
-```dive demo-back```
+```dive gvergne/demo-back:1.0```
 
 ## Test image quality
 
