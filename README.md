@@ -221,7 +221,7 @@ systemd─┬─VBoxService───7*[{VBoxService}]
 
 ## Hello NGINX
 
-```cd  cd /vagrant_data/docker-training/demo/hello-nginx/```
+```cd /vagrant_data/docker-training/demo/hello-nginx/```
 
 ```docker build -t hello-nginx .```
 
