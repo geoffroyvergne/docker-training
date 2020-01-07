@@ -1,0 +1,64 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: demoapp
+spec:
+  selector:
+    matchLabels:
+      app: demoapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demoapp
+        tier: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: gvergne/demo-front
+          imagePullPolicy: IfNotPresent
+          #ports:
+          #  - containerPort: 81
+
+#---
+
+#kind: Service
+#apiVersion: v1
+#metadata:
+#  name: frontend
+#  namespace: demoapp
+#  labels:
+#    app: frontend
+#spec:
+#  ports:
+#    - name: http
+#      protocol: TCP
+#      port: 81
+#      #targetPort: 81
+#  selector:
+#    app: frontend
+#  type: NodePort
+#  sessionAffinity: None
+
+
+#---
+
+#apiVersion: networking.k8s.io/v1beta1 # for versions before 1.14 use extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: frontend
+#  namespace: demoapp
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /$1
+#spec:
+#  rules:
+#    - host: demoapp.192.168.64.9.nip.io
+#      http:
+#        paths:
+#          - path: /
+#            backend:
+#              serviceName: frontend
+#              servicePort: 80

@@ -23,7 +23,7 @@ services:
     ports:
       - "80"
     labels:
-      - "traefik.http.routers.frontend.rule=Host(`localhost`)"
+      - "traefik.http.routers.frontend.rule=Host(`demo.192.168.1.21.nip.io`)"
 
   backend:
     image: gvergne/demo-back
@@ -42,7 +42,7 @@ services:
     ports:
       - "80"
     labels:
-      - "traefik.http.routers.backend.rule=Host(`localhost`) && PathPrefix(`/api/backend`)"
+      - "traefik.http.routers.backend.rule=Host(`demo.192.168.1.21.nip.io`) && PathPrefix(`/api/backend`)"
     depends_on:
       - database
     links:
@@ -56,4 +56,4 @@ services:
       - POSTGRES_PASSWORD=todo
       - POSTGRES_DB=todo
     volumes:
-      - /data/db/docker/demo/postgresql:/var/lib/postgresql/data
+      - ~/data/db/docker/demo/postgresql:/var/lib/postgresql/data
