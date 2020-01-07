@@ -9,8 +9,4 @@ server {
     
     try_files $uri $uri/ /index.html;
   }
-
-  location /api/backend {
-    proxy_pass         ${NGINX_BACKEND_API};
-  }
 }

@@ -1,0 +1,12 @@
+server {
+  listen       ${NGINX_PORT};
+  server_name  ${NGINX_SERVER_NAME};
+
+  location /api/backend {
+    proxy_pass         ${NGINX_BACKEND_API};
+  }
+
+  location / {
+    proxy_pass         ${NGINX_FRONTEND_APP};
+  }
+}

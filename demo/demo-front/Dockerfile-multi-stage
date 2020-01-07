@@ -3,19 +3,18 @@
 FROM node:12-alpine AS build
 
 
-#npm config set https-proxy https://fr-proxy.groupinfra.com:3128
-#npm config set proxy http://fr-proxy.groupinfra.com:3128
+#RUN npm config set https-proxy https://fr-proxy.groupinfra.com:3128
+#RUN npm config set proxy http://fr-proxy.groupinfra.com:3128
 
-WORKDIR /app
+RUN npm config set proxy http://10.237.4.220:3128
+
+WORKDIR /build
 COPY . .
 
-RUN npm set progress=false && npm config set depth 0
-
-RUN npm install -g @angular/cli
-
-RUN npm install
-
-RUN npm run build
+RUN npm set progress=false && npm config set depth 0 && \
+npm install -g @angular/cli && \
+npm install && \
+npm run build
 
 # ------------- RUN ----------------
 
@@ -25,11 +24,10 @@ COPY default.tmpl /etc/nginx/default.tmpl
 
 RUN rm /usr/share/nginx/html/*
 
-COPY --from=build /app/dist/demo-front/ /usr/share/nginx/html/
+COPY --from=build /build/dist/demo-front/ /usr/share/nginx/html/
 
-ENV NGINX_BACKEND_API="http://demo-back:8080" \
-NGINX_PORT=80 \
+ENV NGINX_PORT=81 \
 NGINX_SERVER_NAME=localhost \
 NGINX_AUTO_INDENT=on
 
-CMD /bin/sh -c "envsubst '\$NGINX_BACKEND_API \$NGINX_PORT \$NGINX_SERVER_NAME \$NGINX_AUTO_INDENT' < /etc/nginx/default.tmpl > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;' || cat /etc/nginx/conf.d/default.conf"
+CMD /bin/sh -c "envsubst '\$NGINX_PORT \$NGINX_SERVER_NAME \$NGINX_AUTO_INDENT' < /etc/nginx/default.tmpl > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;' || cat /etc/nginx/conf.d/default.conf"
