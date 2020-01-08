@@ -8,5 +8,6 @@ server {
 
   location / {
     proxy_pass         ${NGINX_FRONTEND_APP};
+    #try_files $uri $uri/ /index.html;
   }
 }

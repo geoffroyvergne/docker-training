@@ -30,11 +30,11 @@ spec:
             - name: POSTGRES_USER
               value: todo
             - name: POSTGRES_PASSWORD
-              value: todo
-              #valueFrom:
-              #  secretKeyRef:
-              #    name: demoapp
-              #    key: postgress-password
+              #value: todo
+              valueFrom:
+                secretKeyRef:
+                  name: demoapp
+                  key: postgres-password
           ports:
             - containerPort: 5432
               name: postgres
