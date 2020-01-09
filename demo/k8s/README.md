@@ -4,7 +4,7 @@
 
 ```
 minikube config set vm-driver hyperkit
-minikube start 
+minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.14.2
 
 minikube start \
 --vm-driver=kvm2 \
@@ -37,6 +37,8 @@ kubectl delete deployment hello-minikube
 ```
 minikube ssh
 sudo mkdir /data/demoapp
+
+minikube ssh 'sudo mkdir /data/demoapp' 
 
 kubectl get pods -n kube-system
 
