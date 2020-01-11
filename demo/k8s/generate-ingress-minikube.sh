@@ -1,4 +1,9 @@
-apiVersion: networking.k8s.io/v1beta1 
+#!/usr/bin/env bash
+
+PUBLIC_IP=$(minikube ip)
+
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: ingress
@@ -9,7 +14,7 @@ metadata:
     #nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-    - host: demoapp.51.124.14.54.nip.io
+    - host: demoapp.$PUBLIC_IP.nip.io
       http:
         paths:
           - path: /
@@ -20,3 +25,6 @@ spec:
             backend:
               serviceName: backend
               servicePort: 8080
+EOF
+
+echo "curl -v http://demoapp.$PUBLIC_IP.nip.io"

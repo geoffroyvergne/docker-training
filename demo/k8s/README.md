@@ -15,6 +15,9 @@ export NO_PROXY="localhost,127.0.0.0/8,::1,$(minikube ip),demoapp"
 export no_proxy="localhost,127.0.0.0/8,::1,$(minikube ip),demoapp"
 
 minikube addons enable ingress
+
+minikube tunnel
+
 ```
 
 ## Test installation
@@ -58,6 +61,8 @@ kubectl apply -f frontend.yml
 ```
 minikube service frontend -n demoapp
 curl -v $(minikube service frontend --url -n demoapp)
+
+curl -v $(minikube service backend --url -n demoapp)/api/backend/index/test
 
 curl -v -H Host:demoapp $(minikube ip)
 ```

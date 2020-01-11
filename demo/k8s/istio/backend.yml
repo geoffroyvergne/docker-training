@@ -16,6 +16,7 @@ spec:
         app: backend
         tier: backend
     spec:
+      serviceAccountName: demoapp-backend
       containers:
         - name: backend
           image: gvergne/demo-back
@@ -41,6 +42,16 @@ spec:
 ---
 
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: demoapp-backend
+  namespace: demoapp
+  labels:
+    account: backend
+
+---
+
+apiVersion: v1
 kind: Service
 metadata:
   name: backend
@@ -48,31 +59,12 @@ metadata:
 spec:
   externalTrafficPolicy: Cluster
   ports:
-  - port: 8080
-    protocol: TCP
-    targetPort: 8080
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
   selector:
     app: backend
   sessionAffinity: None
   type: NodePort
 status:
   loadBalancer: {}
-
-#---
-
-#apiVersion: networking.k8s.io/v1beta1 
-#kind: Ingress
-#metadata:
-#  name: backend
-#  namespace: demoapp
-#  annotations:
-#    kubernetes.io/ingress.class: nginx
-#spec:
-#  rules:
-#    - host: demoapp
-#      http:
-#        paths:
-#          - path: /api/backend
-#            backend:
-#              serviceName: backend
-#              servicePort: 8080
