@@ -3,12 +3,15 @@ import { HttpService } from '../common/service/http.service';
 import 'rxjs/add/operator/toPromise';
 import { Todo } from '../common/modele/todo.modele';
 import { Status } from '../common/modele/status.modele';
+import { SettingsService } from '../common/service/settings.service';
 
 @Injectable()
 export class TodoService {
-  resourceUrl: string = '/api/backend/todo/';
+  resourceUrl: string
 
-  constructor(public httpService: HttpService) { }
+  constructor(public httpService: HttpService, settingsService: SettingsService) { 
+    this.resourceUrl = settingsService.settings.apiUrl + '/api/backend/todo/';
+  }
 
   getAll(): Promise<void | Todo[]> {
     return this.httpService.get(this.resourceUrl)

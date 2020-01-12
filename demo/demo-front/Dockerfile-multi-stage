@@ -5,8 +5,7 @@ FROM node:12-alpine AS build
 
 #RUN npm config set https-proxy https://fr-proxy.groupinfra.com:3128
 #RUN npm config set proxy http://fr-proxy.groupinfra.com:3128
-
-RUN npm config set proxy http://10.237.4.220:3128
+#RUN npm config set proxy http://10.237.4.220:3128
 
 WORKDIR /build
 COPY . .
@@ -30,4 +29,6 @@ ENV NGINX_PORT=81 \
 NGINX_SERVER_NAME=localhost \
 NGINX_AUTO_INDENT=on
 
-CMD /bin/sh -c "envsubst '\$NGINX_PORT \$NGINX_SERVER_NAME \$NGINX_AUTO_INDENT' < /etc/nginx/default.tmpl > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;' || cat /etc/nginx/conf.d/default.conf"
+CMD /bin/sh -c "envsubst '\$NGINX_PORT \$NGINX_SERVER_NAME \$NGINX_AUTO_INDENT' < /etc/nginx/default.tmpl > /etc/nginx/conf.d/default.conf && \
+envsubst '\$API_URL' < /usr/share/nginx/html/assets/settings.template.json > /usr/share/nginx/html/assets/settings.json && \
+nginx -g 'daemon off;' || cat /etc/nginx/conf.d/default.conf"

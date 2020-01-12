@@ -35,10 +35,10 @@ docker run \
     --rm \
     --name demo-front \
     --link demo-back \
-    -p 80:80 \
-    -e NGINX_BACKEND_API="http://demo-back:8080" \
+    -p 80:81 \
+    -e API_URL=http://localhost:8080 \
     -d \
-    gvergne/demo-front:1.0
+    gvergne/demo-front
 ```
 
 ## Run in browser

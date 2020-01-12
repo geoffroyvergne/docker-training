@@ -8,6 +8,9 @@ COPY dist/demo-front/ /usr/share/nginx/html/
 
 ENV NGINX_PORT=81 \
 NGINX_SERVER_NAME=localhost \
-NGINX_AUTO_INDENT=on
+NGINX_AUTO_INDENT=on \
+API_URL=""
 
-CMD /bin/sh -c "envsubst '\$NGINX_PORT \$NGINX_SERVER_NAME \$NGINX_AUTO_INDENT' < /etc/nginx/default.tmpl > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;' || cat /etc/nginx/conf.d/default.conf"
+CMD /bin/sh -c "envsubst '\$NGINX_PORT \$NGINX_SERVER_NAME \$NGINX_AUTO_INDENT' < /etc/nginx/default.tmpl > /etc/nginx/conf.d/default.conf && \
+envsubst '\$API_URL' < /usr/share/nginx/html/assets/settings.template.json > /usr/share/nginx/html/assets/settings.json && \
+nginx -g 'daemon off;' || cat /etc/nginx/conf.d/default.conf"
