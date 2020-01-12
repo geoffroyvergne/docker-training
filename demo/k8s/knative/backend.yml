@@ -1,0 +1,27 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: backend
+  namespace: demoapp
+  labels:
+    app: nip
+spec:
+  template:
+    spec:
+      containers:
+        - image: gvergne/demo-back
+          env:
+            - name: DATABASE_HOST
+              value: postgres
+            - name: DATABASE_USER
+              value: todo
+            - name: DATABASE_PASSWORD
+              #value: todo
+              valueFrom:
+                secretKeyRef:
+                  name: demoapp
+                  key: postgres-password
+            - name: DATABASE_BASE
+              value: todo
+            - name: HIBERNATE_DLLAUTO
+              value: create-drop
